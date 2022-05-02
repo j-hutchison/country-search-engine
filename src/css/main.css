@@ -4,6 +4,7 @@
 	--txt-default-color: #111517;
 	--heading-1-color: #111517;
 	--heading-2-color: #111517;
+	--text-light: #848484;
 }
 
 /* Initial CSS Boilerplate */
@@ -48,6 +49,9 @@ h1 {
 main {
 }
 nav {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 4.8rem;
 }
 h2 {
 }
@@ -73,17 +77,52 @@ h2 {
 .theme__label {
 }
 .search {
+	position: relative;
 }
 .search__field {
+	width: 48rem;
+	height: 5.6rem;
+
+	padding-left: 7.4rem;
 }
 .icon__search {
+	position: absolute;
+	top: 2rem;
+	left: 3rem;
+	color: var(--text-light);
 }
-.filters {
+
+.border-style__input {
+	background-color: var(--bg-header);
+	border: none;
+	box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.0532439);
+	border-radius: 5px;
 }
+
+input:focus,
+select:focus {
+	outline: none;
+}
+
+.region__option {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+}
+
 .filter {
+	width: 20rem;
+	height: 5.6rem;
+
+	padding: 1.8rem 2.4rem;
+	color: var(--txt-default-color);
 }
-.region__select {
+
+.filter ul {
+	list-style: none;
 }
+
 .grid {
 }
 .dimensions__grid {
