@@ -124,13 +124,41 @@ select:focus {
 }
 
 .grid {
+	display: grid;
+	gap: 7.5rem;
 }
-.dimensions__grid {
+.tile__grid {
+	grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 .country__tile {
+	background-color: #fff;
+	box-shadow: 0 0 0.7rem 0.2rem rgba(0, 0, 0, 0.0294384);
+	border-radius: 0.5rem;
+
+	width: 26.4rem;
+	height: 33.6rem;
 }
+.country__img {
+	width: 100%;
+	height: 16rem;
+}
+
+.country-content {
+	display: flex;
+	flex-direction: column;
+	padding: 2.4rem;
+	margin-bottom: 0.8rem;
+}
+
+.country-content h2 {
+	margin-bottom: 0.8rem;
+}
+
 .country-data__label {
+	margin-right: 0.5rem;
 }
+
+/* CSS STYLES FOR INDIVIDUAL COUNTRY PAGE */
 .country__page {
 }
 .countrypage__grid {

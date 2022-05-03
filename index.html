@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="./src/css/main.css" />
 
 		<!-- SCRIPT IMPORTS -->
-		<script defer src="./src/js/controller.js"></script>
+		<script type="module" defer src="./src/js/controller.js"></script>
 	</head>
 	<body>
 		<header class="pad__margin">
@@ -108,21 +108,27 @@
 					</div>
 				</div>
 			</nav>
-			<div class="grid dimensions__grid">
-				<div class="country__tile">
-					<img src="" alt="Image showing the flag of {country}" />
-					<h2>Germany</h2>
-					<span
-						><strong class="country-data__label">Population:</strong
-						>81,770,990</span
-					>
-					<span
-						><strong class="country-data__label">Region:</strong>Europe</span
-					>
-					<span
-						><strong class="country-data__label">Capital:</strong>Berlin</span
-					>
-				</div>
+			<div class="grid tile__grid">
+				<!-- <div class="country__tile">
+					<img
+						class="country__img"
+						src="./src/images/germanyflag.jpg"
+						alt="Image showing the flag of {country}"
+					/>
+					<div class="country-content">
+						<h2>Germany</h2>
+						<span
+							><strong class="country-data__label">Population:</strong
+							>81,770,990</span
+						>
+						<span
+							><strong class="country-data__label">Region:</strong>Europe</span
+						>
+						<span
+							><strong class="country-data__label">Capital:</strong>Berlin</span
+						>
+					</div>
+				</div> -->
 			</div>
 			<!-- <div class="country__page">
 				<div class="grid countrypage__grid">
