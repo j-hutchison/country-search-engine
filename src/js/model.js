@@ -1,4 +1,5 @@
 import { API_URL } from "./config.js";
+import { isEmpty } from "./helper.js";
 
 export const state = {
 	country: {},
@@ -71,7 +72,9 @@ export const getAllCountries = async function () {
 			);
 		const json = await data.json();
 
-		state.search.results = json.map((rec) => _createCountryObject(rec));
+		state.search.results = json
+			.map((rec) => _createCountryObject(rec))
+			.sort((a, b) => a.name.localeCompare(b.name));
 	} catch (err) {
 		console.error(err);
 	}
@@ -88,6 +91,26 @@ export const getAllCountries = async function () {
  * @param countryName - string value used to lookup countries that start with the input string
  * @returns {[object]} - array of country objects to be returned
  */
+export const getCountryByName = async function (countryName) {
+	try {
+		console.log(countryName);
+		if (isEmpty(countryName)) return await getAllCountries();
+
+		const data = await fetch(`${API_URL}name/${countryName}`);
+		console.log(data);
+		if (!data.ok)
+			throw `An error occurred returning results to your search criteria. Please try again`;
+		const json = await data.json();
+
+		state.search.results = json
+			.map((rec) => _createCountryObject(rec))
+			.sort((a, b) => a.name.localeCompare(b.name));
+
+		console.log(json);
+	} catch (err) {
+		throw err;
+	}
+};
 
 /**
  * @name init

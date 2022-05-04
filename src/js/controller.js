@@ -1,22 +1,29 @@
 import * as model from "./model.js";
 import countryResultsView from "./views/countryResultsView.js";
+import countrySearchView from "./views/countrySearchView.js";
 
 const controlCountrySearch = async function () {
 	try {
-		const query = countryResultsView.getSearchQuery();
-		console.log(query);
+		const query = countrySearchView.getSearchQuery();
+		// console.log(query);
 
-		//TODO add call to the model to get countries fulfilling the query search
+		await model.getCountryByName(query);
 
+		countryResultsView.clear();
 		countryResultsView.generateMarkup(model.state.search.results);
 	} catch (err) {
-		console.error(err);
+		throw err;
 	}
 };
 
+const controlCountryPage = async function () {
+	console.log(`controlCountryPage`);
+};
+
 const init = function () {
-	countryResultsView.addHandlerSearch(controlCountrySearch);
+	countrySearchView.addHandlerSearch(controlCountrySearch);
 	countryResultsView.generateMarkup(model.state.search.results);
+	countryResultsView.addHandlerClick();
 };
 
 await model.getAllCountries();

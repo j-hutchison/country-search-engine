@@ -45,6 +45,24 @@
 		</header>
 		<main class="pad__margin">
 			<nav>
+				<!-- <div class="btn back__btn">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="icon ionicon"
+						viewBox="0 0 512 512"
+					>
+						<title>Arrow Back</title>
+						<path
+							fill="none"
+							stroke="currentColor"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="48"
+							d="M244 400L100 256l144-144M120 256h292"
+						/>
+					</svg>
+					<span class="">Back</span>
+				</div> -->
 				<form class="search">
 					<input
 						type="text"
@@ -74,7 +92,7 @@
 						/>
 					</svg>
 				</form>
-				<div class="filters">
+				<!--<div class="filters">
 					<div class="filter border-style__input">
 						<ul class="region__select">
 							<li class="region__option">
@@ -103,10 +121,10 @@
 							<li value="america">America</li>
 							<li value="asia">Asia</li>
 							<li value="europe">Europe</li>
-							<li value="oceania">Oceania</li> -->
+							<li value="oceania">Oceania</li> 
 						</ul>
 					</div>
-				</div>
+				</div>-->
 			</nav>
 			<div class="grid tile__grid">
 				<!-- <div class="country__tile">
@@ -132,27 +150,51 @@
 			</div>
 			<!-- <div class="country__page">
 				<div class="grid countrypage__grid">
-					<img src="" alt="Image showing the flag of {country}" />
+					<img
+						class="countrypage__img"
+						src="./src/images/germanyflag.jpg"
+						alt="Image showing the flag of {country}"
+					/>
 					<div class="country__content">
 						<h1>Belgium</h1>
 						<div class="grid countryinfro__grid">
-							<span><strong class="country-data__label">Native Name:</strong>Belgé</span>
-							<span><strong class="country-data__label">Population:</strong>11,319,511</span>
-							<span><strong class="country-data__label">Region:</strong>Europe</span>
-							<span><strong class="country-data__label">Sub Region:</strong>Western Europe</span>
-							<span><strong class="country-data__label">Capital:</strong>Brussels</span>
-							<span><strong class="country-data__label">Top Level Domain:</strong>.be</span>
-							<span><strong class="country-data__label">Currencies:</strong>EUR</span>
-							<span><strong class="country-data__label">Languages:</strong>Dutch, French, German</span>
+							<span
+								><strong class="country-data__label">Native Name:</strong
+								>Belgé</span
+							>
+							<span
+								><strong class="country-data__label">Population:</strong
+								>11,319,511</span
+							>
+							<span
+								><strong class="country-data__label">Region:</strong
+								>Europe</span
+							>
+							<span
+								><strong class="country-data__label">Sub Region:</strong>Western
+								Europe</span
+							>
+							<span
+								><strong class="country-data__label">Capital:</strong
+								>Brussels</span
+							>
+							<span
+								><strong class="country-data__label">Top Level Domain:</strong
+								>.be</span
+							>
+							<span
+								><strong class="country-data__label">Currencies:</strong
+								>EUR</span
+							>
+							<span
+								><strong class="country-data__label">Languages:</strong>Dutch,
+								French, German</span
+							>
 						</div>
 						<div class="border-countries">
-							<label for="border-countries__select"
-								><strong>Border Countries:</strong></label
-							>
-							<select
-								name="border-countries"
-								id="border-countries__select"
-							></select>
+							<span><strong>Border Countries:</strong></span>
+							<span class="tag">France</span>
+							<span class="tag">Germany</span>
 						</div>
 					</div>
 				</div>

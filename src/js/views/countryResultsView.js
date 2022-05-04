@@ -1,28 +1,10 @@
 class CountryResultsView {
-	_parentElement = document.querySelector(".search");
-	_tileGrid = document.querySelector(".tile__grid");
-
-	/**
-	 * addHandlerSearch
-	 * @param {function} handler
-	 * @description this function uses the publisher subscriber pattern to pass a function from the controller to the view
-	 */
-	addHandlerSearch(handler) {
-		this._parentElement.addEventListener("submit", function (e) {
-			e.preventDefault();
-			handler();
-		});
-	}
-
-	getSearchQuery() {
-		const query = this._parentElement.querySelector(".search__field");
-		return query.value;
-	}
+	_parentElement = document.querySelector(".tile__grid");
 
 	generateMarkup(data) {
-		//TODO add code to produce a new string with html to be rendered to the view
-		const markup = data.map((el) => {
-			return `<div class="country__tile">
+		const markup = data
+			.map((el) => {
+				return `<div class="country__tile">
             <img
                 class="country__img"
                 src="${el.flag}"
@@ -42,9 +24,23 @@ class CountryResultsView {
                 >
             </div>
         </div>`;
-		});
+			})
+			.join("");
 
-		this._tileGrid.insertAdjacentHTML("afterbegin", markup);
+		this._parentElement.insertAdjacentHTML("afterbegin", markup);
+	}
+
+	addHandlerClick(handler) {
+		this._parentElement.addEventListener("click", function (e) {
+			e.preventDefault();
+			const countryTile = e.target.closest(".country__tile");
+			console.log(countryTile);
+		});
+	}
+
+	//TODO Move into a parent view class
+	clear() {
+		this._parentElement.innerHTML = "";
 	}
 }
 
