@@ -1,10 +1,14 @@
 import * as model from "./model.js";
+import countryPageView from "./views/countryPageView.js";
 import countryResultsView from "./views/countryResultsView.js";
-import countrySearchView from "./views/countrySearchView.js";
+import countryNavView from "./views/CountryNavView.js";
 
+/**
+ *
+ */
 const controlCountrySearch = async function () {
 	try {
-		const query = countrySearchView.getSearchQuery();
+		const query = countryNavView.getSearchQuery();
 		// console.log(query);
 
 		await model.getCountryByName(query);
@@ -16,15 +20,38 @@ const controlCountrySearch = async function () {
 	}
 };
 
-const controlCountryPage = async function () {
-	console.log(`controlCountryPage`);
+/**
+ *
+ * @param {string} countryName
+ */
+const controlCountryPage = async function (countryName) {
+	await model.getCountryByName(countryName);
+	countryResultsView.clear();
+	countryNavView.clear();
+	countryNavView.generatePageMarkup();
+	countryPageView.generateMarkup(model.state.search.results);
 };
 
-const init = function () {
-	countrySearchView.addHandlerSearch(controlCountrySearch);
+const renderHomepage = async function () {
+	countryResultsView.clear();
+	countryNavView.clear();
+	countryPageView.clear();
+
+	countryNavView.generateSearchMarkup();
+	await model.getCountryByName("");
 	countryResultsView.generateMarkup(model.state.search.results);
-	countryResultsView.addHandlerClick();
 };
 
-await model.getAllCountries();
+/**
+ *
+ */
+const init = async function () {
+	// generate initial markup
+	await renderHomepage();
+	// add event listeners
+	countryNavView.addHandlerSearch(controlCountrySearch);
+	countryResultsView.addHandlerClick(controlCountryPage);
+	countryNavView.addHandlerBackBtn(renderHomepage);
+};
+
 init();

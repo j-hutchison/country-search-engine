@@ -4,7 +4,7 @@ class CountryResultsView {
 	generateMarkup(data) {
 		const markup = data
 			.map((el) => {
-				return `<div class="country__tile">
+				return `<div class="country__tile" data-country-name="${el.name}">
             <img
                 class="country__img"
                 src="${el.flag}"
@@ -34,7 +34,12 @@ class CountryResultsView {
 		this._parentElement.addEventListener("click", function (e) {
 			e.preventDefault();
 			const countryTile = e.target.closest(".country__tile");
-			console.log(countryTile);
+
+			if (!countryTile) return;
+
+			const countryClicked = countryTile.dataset.countryName;
+
+			handler(countryClicked);
 		});
 	}
 

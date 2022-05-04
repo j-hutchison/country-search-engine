@@ -28,11 +28,10 @@ const _createCountryObject = function (object) {
 		region: object.region,
 		subRegion: object.subregion,
 		flag: svg,
+		countryCode: object.cca3,
 	};
 
-	//TODO Add code for getting and assigning currencies
 	//TODO Add code for getting languages
-	//TODO Add code for setting capital
 	//TODO Add code for getting domain
 	//TODO Add code for getting nativename(?)
 	// get the currencies from the API as string
@@ -71,6 +70,7 @@ export const getAllCountries = async function () {
 				"An error occurred trying to return all countries. Please try again."
 			);
 		const json = await data.json();
+		console.log(json);
 
 		state.search.results = json
 			.map((rec) => _createCountryObject(rec))
