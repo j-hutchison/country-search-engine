@@ -3,6 +3,8 @@ class CountryPageView {
 
 	generateMarkup(data) {
 		console.log(data);
+
+		//TODO UPDATE IF NO NEIGHBOURS
 		const markup = data
 			.map((el) => {
 				return `<div class="grid countrypage__grid">
@@ -16,7 +18,7 @@ class CountryPageView {
                     <div class="grid countryinfro__grid">
                         <span
                             ><strong class="country-data__label">Native Name:</strong
-                            >TEST NAME</span
+                            >${el.nativeName}</span
                         >
                         <span
                             ><strong class="country-data__label">Population:</strong
@@ -27,7 +29,9 @@ class CountryPageView {
                             >${el.region}</span
                         >
                         <span
-                            ><strong class="country-data__label">Sub Region:</strong>${el.subRegion}</span
+                            ><strong class="country-data__label">Sub Region:</strong>${
+															el.subRegion
+														}</span
                         >
                         <span
                             ><strong class="country-data__label">Capital:</strong
@@ -35,20 +39,26 @@ class CountryPageView {
                         >
                         <span
                             ><strong class="country-data__label">Top Level Domain:</strong
-                            >TEST DOMAIN</span
+                            >${el.domain}</span
                         >
                         <span
                             ><strong class="country-data__label">Currencies:</strong
                             >${el.currencies}</span
                         >
                         <span
-                            ><strong class="country-data__label">Languages:</strong>TEST LANGUAGE</span
+                            ><strong class="country-data__label">Languages:</strong>${
+															el.languages
+														}</span
                         >
                     </div>
                     <div class="border-countries">
                         <span><strong>Border Countries:</strong></span>
-                        <span class="tag">France</span>
-                        <span class="tag">Germany</span>
+                        ${el.borders
+													.map(
+														(country) =>
+															`<span class="tag" dataset-country-name="${country}">${country}</span>`
+													)
+													.join("")}
                     </div>
                 </div>
             </div>`;

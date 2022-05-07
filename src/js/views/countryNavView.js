@@ -1,5 +1,5 @@
 class CountryNavView {
-	_parentElement = document.querySelector(".search");
+	_parentElement = document.querySelector(".searchbar");
 
 	/**
 	 *
@@ -35,8 +35,8 @@ class CountryNavView {
 	/**
 	 *
 	 */
-	generateSearchMarkup() {
-		const markup = `<input
+	generateMarkup() {
+		const markup = `<div><input
         type="text"
         class="search__field border-style__input"
         placeholder="Search for a country.."
@@ -62,7 +62,7 @@ class CountryNavView {
             stroke-width="32"
             d="M338.29 338.29L448 448"
         />
-    </svg>`;
+    </svg></div>`;
 
 		this._parentElement.insertAdjacentHTML("afterbegin", markup);
 	}
