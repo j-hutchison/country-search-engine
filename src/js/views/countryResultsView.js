@@ -1,3 +1,5 @@
+import { formatNumber } from "../helper.js";
+
 class CountryResultsView {
 	_parentElement = document.querySelector(".tile__grid");
 
@@ -14,13 +16,17 @@ class CountryResultsView {
                 <h2>${el.name}</h2>
                 <span
                     ><strong class="country-data__label">Population:</strong
-                    >${el.population}</span
+                    >${formatNumber(el.population)}</span
                 >
                 <span
-                    ><strong class="country-data__label">Region:</strong>${el.region}</span
+                    ><strong class="country-data__label">Region:</strong>${
+											el.region
+										}</span
                 >
                 <span
-                    ><strong class="country-data__label">Capital:</strong>${el.capital}</span
+                    ><strong class="country-data__label">Capital:</strong>${
+											el.capital
+										}</span
                 >
             </div>
         </div>`;

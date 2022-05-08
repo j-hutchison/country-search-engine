@@ -1,10 +1,27 @@
+import { formatNumber } from "../helper.js";
+
 class CountryPageView {
 	_parentElement = document.querySelector(".country__page");
 
 	generateMarkup(data) {
 		console.log(data);
 
-		//TODO UPDATE IF NO NEIGHBOURS
+		const borderTagMarkup = data
+			.map((el) => {
+				return el.borders
+					? `<div class="border-countries">
+                 <span><strong>Border Countries:</strong></span>
+                 ${el.borders
+										.map(
+											(country) =>
+												`<span class="tag" data-country-name="${country}">${country}</span>`
+										)
+										.join("")}
+             </div>`
+					: ``;
+			})
+			.join("");
+
 		const markup = data
 			.map((el) => {
 				return `<div class="grid countrypage__grid">
@@ -22,7 +39,7 @@ class CountryPageView {
                         >
                         <span
                             ><strong class="country-data__label">Population:</strong
-                            >${el.population}</span
+                            >${formatNumber(el.population)}</span
                         >
                         <span
                             ><strong class="country-data__label">Region:</strong
@@ -50,22 +67,26 @@ class CountryPageView {
 															el.languages
 														}</span
                         >
-                    </div>
-                    <div class="border-countries">
-                        <span><strong>Border Countries:</strong></span>
-                        ${el.borders
-													.map(
-														(country) =>
-															`<span class="tag" dataset-country-name="${country}">${country}</span>`
-													)
-													.join("")}
-                    </div>
+                    </div>${borderTagMarkup}
                 </div>
             </div>`;
 			})
 			.join("");
 
 		this._parentElement.insertAdjacentHTML("afterbegin", markup);
+	}
+
+	addHandlerClick(handler) {
+		this._parentElement.addEventListener("click", function (e) {
+			e.preventDefault();
+			const countryTag = e.target.closest(".tag");
+
+			if (!countryTag) return;
+
+			const countryClicked = countryTag.dataset.countryName;
+
+			handler(countryClicked);
+		});
 	}
 
 	//TODO Move into a parent view class

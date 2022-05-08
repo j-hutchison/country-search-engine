@@ -29,8 +29,11 @@ const controlCountryPage = async function (countryName) {
 	await model.getCountryByName(countryName, true);
 	await model.getCountryByCode();
 	await countryResultsView.clear();
+
 	countryNavView.clear();
 	countryFilterView.clear();
+	countryPageView.clear();
+
 	countryNavView.generatePageMarkup();
 	countryPageView.generateMarkup(model.state.country);
 };
@@ -76,13 +79,11 @@ const init = async function () {
 	countryNavView.addHandlerBackBtn(renderHomepage);
 	countryFilterView.addHandlerClick(controlRegionFilters);
 	countryFilterView.handleFilterClick(controlRegionFilterClick);
+	countryPageView.addHandlerClick(controlCountryPage);
 
-	//TODO Add code for listening to clicks of border country tags
-	//TODO Add fix to duplicate countries displaying when click country, e.g. guinea
 	//TODO show clicked on region in filter dropdown
 	//TODO implement dark mode
-	//TODO fix bug when clicking country w no borders
-	//TODO format numbers w commas
+	//TODO add loading spinner(?)
 };
 
 init();

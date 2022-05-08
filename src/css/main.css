@@ -200,12 +200,12 @@ select:focus {
 }
 .countrypage__grid {
 	grid-template-columns: 1fr 1fr;
-	align-items: center;
 }
 .countrypage__img {
 	max-width: 50%;
 	border-radius: 1rem;
 	justify-self: center;
+	padding-top: 6rem;
 }
 .country__content {
 	display: flex;
@@ -224,14 +224,14 @@ select:focus {
 
 .countryinfro__grid {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: repeat(5, 1fr);
+	grid-template-rows: auto 1fr 1fr 1fr 1fr;
 	grid-auto-flow: column;
 	gap: 1.5rem;
 	margin-bottom: 4.5rem;
 }
 .border-countries {
 	display: flex;
+	flex-flow: wrap;
 	align-items: center;
 	gap: 1rem;
 }

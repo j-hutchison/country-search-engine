@@ -148,8 +148,8 @@ export const getCountryByName = async function (countryName, isClick) {
 		//TODO can make this better?
 		if (isClick) {
 			state.country = json
-				.map((rec) => _createCountryObject(rec))
-				.sort((a, b) => a.name.localeCompare(b.name));
+				.filter((el) => el.name.common === countryName)
+				.map((rec) => _createCountryObject(rec));
 		} else {
 			state.search.results = json
 				.map((rec) => _createCountryObject(rec))
@@ -167,6 +167,7 @@ export const getCountryByCode = async function () {
 
 		const countryBorders = currentCountry.borders;
 		console.log(countryBorders);
+		if (!countryBorders) return;
 
 		const codesString = countryBorders.map((val) => val).join(",");
 		console.log(codesString);
