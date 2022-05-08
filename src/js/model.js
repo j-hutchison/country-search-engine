@@ -11,6 +11,7 @@ export const state = {
 		query: "",
 		results: [],
 	},
+	theme: "light",
 };
 
 /**
