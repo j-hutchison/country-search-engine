@@ -1,7 +1,7 @@
 import * as model from "./model.js";
 import countryPageView from "./views/countryPageView.js";
 import countryResultsView from "./views/countryResultsView.js";
-import countryNavView from "./views/CountryNavView.js";
+import countryNavView from "./views/countryNavView.js";
 import countryFilterView from "./views/countryFilterView.js";
 
 /**
