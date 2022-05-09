@@ -1,7 +1,11 @@
 import { formatNumber } from "../helper.js";
+import View from "./view.js";
 
-class CountryResultsView {
+class CountryResultsView extends View {
 	_parentElement = document.querySelector(".tile__grid");
+	constructor() {
+		super();
+	}
 
 	generateMarkup(data) {
 		const markup = data
@@ -47,11 +51,6 @@ class CountryResultsView {
 
 			handler(countryClicked);
 		});
-	}
-
-	//TODO Move into a parent view class
-	clear() {
-		this._parentElement.innerHTML = "";
 	}
 }
 

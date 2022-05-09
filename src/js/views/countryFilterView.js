@@ -1,4 +1,6 @@
-class CountryFilterView {
+import View from "./view.js";
+
+class CountryFilterView extends View {
 	_parentElement = document.querySelector(".filters");
 	_menu = document.querySelector(".region__select");
 	showFilters = false;
@@ -50,14 +52,9 @@ class CountryFilterView {
 	handleFilterClick(handler) {
 		this._parentElement.addEventListener("click", function (e) {
 			const target = e.target;
-			console.log(target);
 			e.target.value = target.dataset.region;
 			handler(target.dataset.region);
 		});
-	}
-
-	clear() {
-		this._parentElement.innerHTML = "";
 	}
 }
 

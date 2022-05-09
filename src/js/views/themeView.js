@@ -1,8 +1,9 @@
 import * as config from "../config.js";
+import View from "./view.js";
 
 const r = document.querySelector(":root");
 
-class ThemeView {
+class ThemeView extends View {
 	_parentElement = document.querySelector(".theme__btn");
 	_darkTheme = document.querySelector(".dark");
 	_lightTheme = document.querySelector(".light");
@@ -88,11 +89,6 @@ class ThemeView {
 			this._lightTheme.classList.remove("hidden");
 			this._darkTheme.classList.add("hidden");
 		}
-	}
-
-	//TODO Move into a parent view class
-	clear() {
-		this._parentElement.innerHTML = "";
 	}
 }
 

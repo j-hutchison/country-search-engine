@@ -11,7 +11,6 @@ import themeView from "./views/themeView.js";
 const controlCountrySearch = async function () {
 	try {
 		const query = countryNavView.getSearchQuery();
-		// console.log(query);
 
 		await model.getCountryByName(query);
 
@@ -55,15 +54,12 @@ const renderHomepage = async function () {
 };
 
 const controlRegionFilters = function () {
-	console.log(`Filter click detected`);
-
 	countryFilterView.clear();
 	countryFilterView._generateFilterDropdown();
 };
 
 const controlRegionFilterClick = async function (filter) {
 	if (!filter) return;
-	console.log(filter);
 	countryResultsView.clear();
 
 	await model.getCountriesByRegion(filter);
@@ -92,9 +88,6 @@ const init = async function () {
 	countryFilterView.handleFilterClick(controlRegionFilterClick);
 	countryPageView.addHandlerClick(controlCountryPage);
 	themeView.addHandlerClick(controlTheme);
-
-	//TODO show clicked on region in filter dropdown
-	//TODO add loading spinner(?)
 };
 
 init();

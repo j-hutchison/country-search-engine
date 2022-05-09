@@ -1,4 +1,6 @@
-class CountryNavView {
+import View from "./view.js";
+
+class CountryNavView extends View {
 	_parentElement = document.querySelector(".searchbar");
 
 	/**
@@ -7,7 +9,6 @@ class CountryNavView {
 	 */
 	getSearchQuery() {
 		const query = this._parentElement.querySelector(".search__field");
-		//TODO validate is valid query string
 		return query.value;
 	}
 
@@ -87,11 +88,6 @@ class CountryNavView {
 		<span class="">Back</span>
 	</div>`;
 		this._parentElement.insertAdjacentHTML("afterbegin", markup);
-	}
-
-	//TODO Move into a parent view class
-	clear() {
-		this._parentElement.innerHTML = "";
 	}
 }
 

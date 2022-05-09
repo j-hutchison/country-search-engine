@@ -91,7 +91,6 @@ export const getCountriesByRegion = async function (region) {
 				`An error occurred trying to return countries for the region: ${region}. Please try again.`
 			);
 		const json = await data.json();
-		console.log(json);
 
 		state.search.results = json
 			.map((rec) => _createCountryObject(rec))
@@ -114,7 +113,6 @@ export const getAllCountries = async function () {
 				"An error occurred trying to return all countries. Please try again."
 			);
 		const json = await data.json();
-		console.log(json);
 
 		state.search.results = json
 			.map((rec) => _createCountryObject(rec))
@@ -137,16 +135,13 @@ export const getAllCountries = async function () {
  */
 export const getCountryByName = async function (countryName, isClick) {
 	try {
-		console.log(countryName);
 		if (isEmpty(countryName)) return await getAllCountries();
 
 		const data = await fetch(`${API_URL}name/${countryName}`);
-		console.log(data);
 		if (!data.ok)
 			throw `An error occurred returning results to your search criteria. Please try again`;
 		const json = await data.json();
 
-		//TODO can make this better?
 		if (isClick) {
 			state.country = json
 				.filter((el) => el.name.common === countryName)
@@ -164,26 +159,19 @@ export const getCountryByName = async function (countryName, isClick) {
 export const getCountryByCode = async function () {
 	try {
 		const currentCountry = state.country.at(0);
-		console.log(currentCountry);
-
 		const countryBorders = currentCountry.borders;
-		console.log(countryBorders);
 		if (!countryBorders) return;
 
 		const codesString = countryBorders.map((val) => val).join(",");
-		console.log(codesString);
 
 		const data = await fetch(`${API_URL}alpha?codes=${codesString}`);
-		console.log(data);
 		if (!data.ok)
 			throw `An error occurred returning results to your search criteria. Please try again`;
 		const json = await data.json();
 
-		//TODO can tidy this up?
 		state.country[0].borders = json.map((country) => {
 			return country.name?.common;
 		});
-		console.log(json);
 	} catch (err) {
 		throw err;
 	}
@@ -194,7 +182,6 @@ export const getCountryByCode = async function () {
  * @description performs the initial get request for all countries
  */
 const init = async function () {
-	console.log(`model initiated`);
 	await getAllCountries();
 };
 init();

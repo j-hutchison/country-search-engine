@@ -1,11 +1,10 @@
 import { formatNumber } from "../helper.js";
+import View from "./view.js";
 
-class CountryPageView {
+class CountryPageView extends View {
 	_parentElement = document.querySelector(".country__page");
 
 	generateMarkup(data) {
-		console.log(data);
-
 		const borderTagMarkup = data
 			.map((el) => {
 				return el.borders
@@ -87,11 +86,6 @@ class CountryPageView {
 
 			handler(countryClicked);
 		});
-	}
-
-	//TODO Move into a parent view class
-	clear() {
-		this._parentElement.innerHTML = "";
 	}
 }
 
