@@ -255,3 +255,37 @@ select:focus {
 .hidden {
 	display: none;
 }
+
+@media (max-width: 82.5em) {
+	.tile__grid {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+
+@media (max-width: 64em) {
+	.tile__grid {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.search {
+		display: block;
+	}
+
+	.searchbar {
+		display: block;
+		margin-bottom: 4rem;
+	}
+
+	.search__field {
+		width: 100%;
+	}
+
+	.filters {
+		display: block;
+		width: 20rem;
+	}
+
+	.filter {
+		position: unset;
+	}
+}
